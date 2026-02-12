@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Drone Mission Control - Advanced</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI, sans-serif;
+}
+
+body{
+    background:#020617;
+    color:#e2e8f0;
+    display:flex;
+}
+
+/* Sidebar */
+.sidebar{
+    width:240px;
+    background:#0f172a;
+    height:100vh;
+    padding:20px;
+    border-right:1px solid #1e293b;
+}
+
+.sidebar h2{
+    color:#38bdf8;
+    margin-bottom:20px;
+}
+
+.status{
+    background:#022c22;
+    padding:10px;
+    border-radius:6px;
+    text-align:center;
+    margin-bottom:10px;
+    font-weight:bold;
+}
+
+.connection{
+    text-align:center;
+    font-size:14px;
+}
+
+/* Main */
+.main{
+    flex:1;
+    padding:20px;
+}
+
+/* Top bar */
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.timer{
+    font-size:28px;
+    color:#facc15;
+}
+
+/* Grid */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+/* Card */
+.card{
+    background:#0f172a;
+    border:1px solid #1e293b;
+    border-radius:10px;
+    padding:20px;
+    box-shadow:0 0 15px rgba(56,189,248,0.05);
+}
+
+.card h3{
+    margin-bottom:10px;
+    color:#38bdf8;
+}
+
+/* Progress Bars */
+.bar{
+    height:18px;
+    background:#1e293b;
+    border-radius:10px;
+    overflow:hidden;
+    margin:8px 0;
+}
+
+.fill{
+    height:100%;
+    width:0%;
+    background:#38bdf8;
+    transition:width 0.5s;
+}
+
+/* Alerts */
+.alert{
+    color:#ef4444;
+    margin-top:5px;
+    font-size:14px;
+}
+
+/* Footer */
+.footer{
+    margin-top:20px;
+    text-align:center;
+    font-size:13px;
+    color:#94a3b8;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <h2>🚁 Drone Panel</h2>
+    <div class="status" id="missionStatus">MISSION ACTIVE</div>
+    <div class="connection" id="connection">● CONNECTED</div>
+</div>
+
+<!-- Main Content -->
+<div class="main">
+
+    <div class="topbar">
+        <h1>Mission Control Dashboard</h1>
+        <div class="timer" id="timer">60</div>
+    </div>
+
+    <div class="grid">
+
+        <!-- Altitude -->
+        <div class="card">
+            <h3>Altitude</h3>
+            <div class="bar"><div class="fill" id="altBar"></div></div>
+            <span id="altValue">0 m</span>
+        </div>
+
+        <!-- Speed -->
+        <div class="card">
+            <h3>Speed</h3>
+            <div class="bar"><div class="fill" id="speedBar"></div></div>
+            <span id="speedValue">0 m/s</span>
+        </div>
+
+        <!-- Battery -->
+        <div class="card">
+            <h3>Battery</h3>
+            <div class="bar"><div class="fill" id="batteryBar"></div></div>
+            <span id="batteryValue">100%</span>
+            <div class="alert" id="batteryAlert"></div>
+        </div>
+
+        <!-- GPS -->
+        <div class="card">
+            <h3>GPS Location</h3>
+            <p>Lat: <span id="lat">0</span></p>
+            <p>Lon: <span id="lon">0</span></p>
+        </div>
+
+        <!-- Alerts -->
+        <div class="card">
+            <h3>System Alerts</h3>
+            <div id="alerts">All systems normal</div>
+        </div>
+
+        <!-- Chart -->
+        <div class="card">
+            <h3>Altitude Trend</h3>
+            <canvas id="altChart"></canvas>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        Advanced Drone Telemetry System | Aerospace Simulation
+    </div>
+
+</div>
+
+<script>
+
+// Configuration
+let time = 60;
+const MAX_ALT = 500;
+const MAX_SPEED = 20;
+
+// Chart Setup
+const ctx = document.getElementById("altChart");
+const altChart = new Chart(ctx, {
+    type: "line",
+    data: {
+        labels: [],
+        datasets: [{
+            label: "Altitude",
+            data: [],
+            borderColor: "#38bdf8",
+            tension: 0.3
+        }]
+    },
+    options: {
+        animation:false,
+        scales:{
+            y:{beginAtZero:true,max:500}
+        }
+    }
+});
+
+// Update chart
+function updateChart(value){
+    altChart.data.labels.push("");
+    altChart.data.datasets[0].data.push(value);
+
+    if(altChart.data.labels.length > 25){
+        altChart.data.labels.shift();
+        altChart.data.datasets[0].data.shift();
+    }
+
+    altChart.update();
+}
+
+// Telemetry Update
+function update(){
+
+    if(time <= 0){
+        document.getElementById("missionStatus").textContent = "MISSION COMPLETE";
+        return;
+    }
+
+    // Simulated data
+    let altitude = Math.random()*MAX_ALT;
+    let speed = Math.random()*MAX_SPEED;
+    let battery = 100 - (60-time)*1.2;
+    let lat = 17.38 + Math.random()*0.001;
+    let lon = 78.48 + Math.random()*0.001;
+
+    // Bars
+    document.getElementById("altBar").style.width = (altitude/MAX_ALT*100)+"%";
+    document.getElementById("speedBar").style.width = (speed/MAX_SPEED*100)+"%";
+    document.getElementById("batteryBar").style.width = battery+"%";
+
+    // Values
+    document.getElementById("altValue").textContent = altitude.toFixed(0)+" m";
+    document.getElementById("speedValue").textContent = speed.toFixed(1)+" m/s";
+    document.getElementById("batteryValue").textContent = battery.toFixed(0)+"%";
+    document.getElementById("lat").textContent = lat.toFixed(6);
+    document.getElementById("lon").textContent = lon.toFixed(6);
+
+    // Alerts
+    let alerts = [];
+    if(battery < 20){
+        alerts.push("⚠ Low Battery");
+        document.getElementById("batteryAlert").textContent = "LOW BATTERY!";
+        document.getElementById("batteryBar").style.background="#ef4444";
+    }else{
+        document.getElementById("batteryAlert").textContent = "";
+        document.getElementById("batteryBar").style.background="#38bdf8";
+    }
+
+    if(altitude > 450) alerts.push("⚠ High Altitude");
+    if(speed > 18) alerts.push("⚠ Overspeed");
+
+    document.getElementById("alerts").innerHTML =
+        alerts.length ? alerts.join("<br>") : "All systems normal";
+
+    // Chart
+    updateChart(altitude);
+
+    // Timer
+    document.getElementById("timer").textContent = time;
+    time--;
+
+    setTimeout(update,1000);
+}
+
+// Connection blink
+setInterval(()=>{
+    const conn = document.getElementById("connection");
+    conn.style.color = Math.random()>0.1 ? "#22c55e" : "#ef4444";
+},3000);
+
+// Start
+update();
+
+</script>
+
+</body>
+</html>
