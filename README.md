@@ -1,99 +1,252 @@
 DRONE TELEMETRY DASHBOARD
-Major Aerospace – CSWE Internship Screening Task
-Author: Karthik Melam
+=========================
+Major Aerospace – CSWE Intern Screening Task
+
+Created by: Karthik Melam
+
 Date: February 12, 2026
+
 Contact: karthikmelam4@gmail.com
 
 PROJECT OVERVIEW
-This project is a web-based Drone Telemetry Simulator that visualizes real-time flight data for a simulated mission. The system displays key operational parameters such as:
+
+This project is a real-time drone telemetry dashboard that simulates flight data for a mission duration of 60 seconds. The system visualizes key parameters such as:
 
 Altitude (0–500 meters)
 
 Speed (0–20 m/s)
 
-Battery level
+Battery Percentage (100% decreasing over time)
 
-GPS coordinates
+GPS Coordinates (Latitude/Longitude)
 
-System alerts and mission status
+System Alerts and Mission Status
 
-Real-time altitude trend graph
+Live altitude trend graph
 
-The dashboard updates every second, generating realistic flight behavior and presenting the information through a professional aerospace-style interface.
+The simulation generates realistic behavior using time-based calculations and controlled random variations to mimic actual drone flight conditions.
 
-TECHNOLOGY STACK
-Frontend
+TECHNOLOGY CHOICE
 
-HTML5 – Structure and layout
+This project is implemented using HTML, CSS, and JavaScript, which are my core strengths in web development. The web-based approach provides:
 
-CSS3 – Styling, responsive design, dark aerospace theme
+Interactive real-time telemetry visualization
 
-JavaScript (ES6) – Simulation logic and real-time updates
+Professional mission-control style dashboard
+
+Cross-platform compatibility (runs in any browser)
+
+Lightweight and dependency-free deployment
+
+Easy integration with future APIs or backend systems
+
+FILES INCLUDED
+
+dashboard.html – Interactive real-time telemetry dashboard
+
+README.md / README.txt – Project documentation
+
+ONE_PAGE_EXPLANATION.txt – Project summary
+
+HOW TO RUN
+
+Open dashboard.html in any modern web browser
+
+Chrome, Firefox, Safari, or Edge recommended
+
+No server required – runs entirely in the browser
+
+No installation or dependencies needed
+
+The simulation starts automatically on page load
+
+The dashboard updates every second for the full mission duration
+
+IMPLEMENTATION DETAILS
+
+Technical Stack:
+
+HTML5 – Structure and semantic layout
+
+CSS3 – Dark aerospace theme, responsive design
+
+JavaScript (ES6) – Real-time simulation logic
 
 Chart.js – Live altitude visualization
 
-Key Characteristics
+CSS Grid & Flexbox – Layout management
 
-Runs entirely in the browser
+Features:
 
-No installation required
+Real-time telemetry updates (1-second interval)
 
-No backend or external setup needed
+Mission timer and system status indicator
 
-FEATURES
-Real-time telemetry simulation (1-second update interval)
+Dynamic progress bars for altitude, speed, and battery
 
-Mission timer and status indicator
+Live altitude trend graph
 
-Dynamic progress bars for:
+GPS coordinate drift simulation
 
-Altitude
-
-Speed
-
-Battery
-
-Live altitude trend chart
-
-GPS coordinate simulation with realistic drift
-
-Automated alert system:
-
-Low battery warning
-
-High altitude warning
-
-Overspeed detection
+Automated system alerts (Low battery, High altitude, Overspeed)
 
 Connection status indicator
 
-Responsive dashboard layout
+Professional aerospace-style UI
 
 Lightweight single-page application
 
-SIMULATION LOGIC
-The telemetry values are generated using mathematical and time-based models:
+How it Works:
 
-Altitude: Random variation within operational range
+JavaScript generates telemetry data every second
 
-Speed: Controlled random behavior within flight limits
+Altitude varies dynamically within operational limits
 
-Battery: Gradual discharge over mission duration
+Speed fluctuates with realistic random behavior
 
-GPS: Small coordinate drift to simulate movement
+Battery decreases gradually over time
 
-Alerts: Triggered when operational thresholds are exceeded
+GPS coordinates shift slightly to simulate movement
 
-Mission duration: 60 seconds
-Update frequency: 1 second
+Threshold-based alerts trigger warning messages
 
-HOW TO RUN
-Download or clone the repository
+Chart updates continuously to display altitude trends
 
-Open the file:
+TECHNICAL SPECIFICATIONS
 
-dashboard.html
-Open it in any modern browser:
+Telemetry Parameters:
+
+Altitude Range: 0 – 500 meters
+
+Speed Range: 0 – 20 m/s
+
+Battery: 100% → ~30–40% over mission
+
+GPS: Simulated coordinate drift
+
+Update Interval: 1 second
+
+Mission Duration: 60 seconds
+
+Data Realism:
+
+Smooth parameter transitions
+
+Random environmental variation
+
+Gradual battery discharge
+
+Continuous movement simulation
+
+Real-time visualization updates
+
+CODE STRUCTURE & ORGANIZATION
+
+The application is structured as a single HTML file:
+
+HTML Head
+
+Meta configuration
+
+External Chart.js integration
+
+Embedded CSS styles
+
+CSS Styling
+
+Dark control-room theme
+
+Grid-based dashboard layout
+
+Component styling and transitions
+
+Responsive design
+
+HTML Body
+
+Sidebar with mission status
+
+Top bar with timer
+
+Telemetry cards (Altitude, Speed, Battery, GPS)
+
+Alert panel
+
+Live chart section
+
+JavaScript Logic
+
+Configuration constants
+
+Real-time update loop
+
+Data generation functions
+
+UI update functions
+
+Chart update logic
+
+Code Quality:
+
+Modular and readable structure
+
+Clear variable naming
+
+Performance-optimized updates
+
+Cross-browser compatibility
+
+CREATIVE & DESIGN FEATURES
+
+Visual Design:
+
+Aerospace-inspired dark theme
+
+Clean mission control interface
+
+Real-time graphical visualization
+
+Status indicators and alert system
+
+User Experience:
+
+Instant visual feedback
+
+Organized dashboard layout
+
+Clear hierarchy of information
+
+Automatic mission completion status
+
+Responsive design for all screen sizes
+
+Data Visualization:
+
+Dynamic progress indicators
+
+Live altitude trend chart
+
+Real-time value updates
+
+Color-coded alerts
+
+TESTING & COMPATIBILITY
+
+The application has been verified to:
+
+✓ Run for full mission duration
+
+✓ Update data every 1 second
+
+✓ Display realistic telemetry behavior
+
+✓ Trigger alerts correctly
+
+✓ Work across modern browsers
+
+✓ Maintain smooth performance
+
+Tested Browsers:
 
 Chrome
 
@@ -103,29 +256,11 @@ Edge
 
 Safari
 
-The simulation starts automatically on page load.
-
-PROJECT STRUCTURE
-project-folder/
-│
-├── dashboard.html     # Main application (HTML + CSS + JS)
-├── README.md          # Project documentation
-└── ONE_PAGE_EXPLANATION.txt
-DESIGN HIGHLIGHTS
-Aerospace-inspired dark control-room interface
-
-Clean and structured layout using CSS Grid & Flexbox
-
-Real-time visual feedback for operational awareness
-
-Professional UI suitable for monitoring applications
-
-Optimized for performance and cross-browser compatibility
-
 SKILLS DEMONSTRATED
-Technical
 
-Front-end development (HTML, CSS, JavaScript)
+Technical Skills:
+
+Front-end web development
 
 Real-time data simulation
 
@@ -135,41 +270,36 @@ UI/UX design
 
 Responsive layout design
 
-Conceptual
+Soft Skills:
 
-System monitoring design
+Problem-solving
 
-Problem-solving and logical thinking
+Analytical thinking
 
-Clean code organization
+Attention to detail
+
+Clean coding practices
 
 Professional documentation
 
-WHY WEB TECHNOLOGY?
+WHY WEB TECHNOLOGY FOR DRONE TELEMETRY?
+
 Web-based dashboards are widely used in modern monitoring systems because they provide:
 
 Cross-platform accessibility
 
-Real-time visualization capabilities
+Real-time data visualization capabilities
 
-Easy integration with APIs and backend systems
+Easy integration with IoT and APIs
 
-Fast development and deployment
+Rapid development and deployment
 
 Scalable architecture for future enhancements
 
-This project demonstrates practical application of web technologies for real-time telemetry monitoring.
+This project demonstrates practical skills applicable to real-world aerospace and telemetry systems.
 
 CONCLUSION
-This project showcases the ability to design and develop a professional real-time monitoring interface using modern web technologies. It reflects strong front-end skills, system thinking, and the ability to build practical solutions relevant to aerospace and software engineering environments.
 
-FUTURE IMPROVEMENTS
-Live map tracking
+This project demonstrates the ability to design and implement a professional real-time monitoring dashboard using modern web technologies. It reflects strong front-end skills, system-level thinking, and practical problem-solving relevant to aerospace and software engineering roles.
 
-Data export functionality
-
-Backend integration for real telemetry
-
-Anomaly detection using machine learning
-
-Mission replay feature
+Thank you for your consideration.
