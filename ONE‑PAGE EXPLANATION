@@ -1,0 +1,107 @@
+ONE‑PAGE EXPLANATION
+Major Aerospace CSWE Internship Task – Drone Telemetry Dashboard
+
+WHAT I BUILT
+I developed an interactive web‑based Drone Telemetry Dashboard that simulates real‑time flight data for a mission duration of 60 seconds. The system displays key flight parameters such as Altitude, Speed, Battery Level, and GPS Location, updating every second to reflect realistic drone behavior.
+
+The application is built using HTML, CSS, and JavaScript, leveraging my web development skills to create a responsive and professional monitoring interface similar to real-world aerospace control dashboards.
+
+HOW IT WORKS
+The simulator generates realistic drone flight patterns using mathematical models and time‑based calculations:
+
+Altitude: Varies dynamically within a 0–500 meter range to simulate ascent and descent behavior
+
+Speed: Changes between 0–20 m/s with controlled random variation
+
+Battery: Gradually decreases over the mission duration
+
+GPS Coordinates: Slight positional drift each second to simulate movement
+
+System Monitoring: Generates alerts for low battery, high altitude, or overspeed conditions
+
+The system updates at 1‑second intervals, ensuring smooth and continuous telemetry visualization.
+
+TECHNICAL IMPLEMENTATION
+Technologies Used
+
+HTML5 – Semantic structure
+
+CSS3 – Dark aerospace theme, grid layout, responsive design
+
+JavaScript (ES6) – Real-time simulation logic
+
+Chart.js – Live altitude trend visualization
+
+Key Features
+
+Real-time telemetry dashboard
+
+Mission timer and status indicator
+
+Live altitude trend graph
+
+Dynamic progress bars for flight parameters
+
+Automated system alert panel
+
+Connection status simulation
+
+Modular and clean code structure
+
+DESIGN & FUNCTIONAL HIGHLIGHTS
+Aerospace‑inspired dark control‑room interface
+
+Real-time data visualization for better situational awareness
+
+Alert‑based monitoring system for critical conditions
+
+Responsive layout using CSS Grid and Flexbox
+
+Single‑page application with no backend dependency
+
+Lightweight and efficient execution in any modern browser
+
+WHY WEB TECHNOLOGY?
+I chose web technologies because:
+
+They align with my core skills in front‑end development
+
+Modern telemetry and monitoring systems often use web dashboards
+
+Web applications provide cross‑platform accessibility
+
+They allow rapid development, visualization, and integration with future APIs or backend systems
+
+This project demonstrates my ability to apply practical web development skills to solve real-world monitoring and visualization problems.
+
+TECHNICAL DETAILS
+Mission Duration: 60 seconds
+
+Update Rate: 1 second
+
+Altitude Range: 0–500 meters
+
+Speed Range: 0–20 m/s
+
+Battery: Gradual simulated discharge
+
+GPS: Simulated coordinate drift
+
+File Structure: Single HTML file with embedded CSS & JavaScript
+
+SUMMARY
+This project showcases my skills in:
+
+Front‑end development
+
+Real‑time data simulation
+
+UI/UX design
+
+Problem solving and system thinking
+
+It reflects my ability to build practical, professional web‑based applications relevant to modern aerospace and software engineering environments.
+
+Author: Karthik Melam
+Date: February 12, 2026
+Contact: karthikmelam4@gmail.com
